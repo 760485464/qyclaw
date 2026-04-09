@@ -35,6 +35,8 @@ Qyclaw 可以理解为一个“平台化的智能体操作系统”：
 
 Qyclaw 的增强点主要在这几个方向：
 
+![执行流程](images/jiago.png)
+
 ### 1. 多租户，而不是单会话实验项目
 
 Qyclaw 原生支持：
@@ -155,7 +157,7 @@ Qyclaw 不是简单的“一条消息直接跑一轮”。
 - 长任务执行
 - 人工审批恢复
 
-![alt text](image.png)  ![alt text](image-1.png)
+![alt text](images/image.png)  ![alt text](images/image-1.png)
 
 ## 核心能力
 
