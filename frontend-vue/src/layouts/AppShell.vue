@@ -3,6 +3,7 @@ import { computed } from "vue";
 import { useRouter } from "vue-router";
 
 import { useSessionStore } from "../stores/session";
+import brandLogo from "../assets/qyclaw_logo.png";
 
 const router = useRouter();
 const session = useSessionStore();
@@ -32,7 +33,7 @@ function logout() {
   <div class="shell">
     <aside class="shell-sidebar">
       <div class="brand-block">
-        <div class="brand-mark">Q</div>
+        <img class="brand-logo" :src="brandLogo" alt="Qyclaw logo" />
         <div>
           <div class="brand-name">Qyclaw</div>
           <div class="brand-subtitle">Vue Console</div>

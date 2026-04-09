@@ -4,6 +4,7 @@ import { useRoute, useRouter } from "vue-router";
 
 import { useI18n } from "../i18n";
 import { useSessionStore } from "../stores/session";
+import brandLogo from "../assets/qyclaw_logo.png";
 
 const router = useRouter();
 const route = useRoute();
@@ -43,7 +44,7 @@ function isNavActive(target) {
   <div class="shell">
     <aside class="shell-sidebar">
       <div class="brand-block">
-        <div class="brand-mark">Q</div>
+        <img class="brand-logo" :src="brandLogo" alt="Qyclaw logo" />
         <div>
           <div class="brand-name">Qyclaw</div>
           <div class="brand-subtitle">{{ t("shell_brand_subtitle") }}</div>
