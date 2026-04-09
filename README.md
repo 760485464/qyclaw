@@ -11,7 +11,6 @@ Qyclaw 是一个面向多租户场景的智能体任务平台。
 
 ![](images/qyclaw_logo1.png)
 
-![](images/screenshot.png)
 
 ## 项目定位
 
