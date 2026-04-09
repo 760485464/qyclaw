@@ -59,14 +59,13 @@ models:
       # #
       # SiliconFlow (OpenAI-compatible):
       base_url: "https://api.siliconflow.cn/v1"
-      api_key: "sk-qeqnlgmxicvnnqqarubzbpdpubhlreicuzdqloiklpeexnhs"
+      api_key:  
       models:
-        - "Pro/zai-org/GLM-5"
+        - "Pro/MiniMaxAI/MiniMax-M2.5"
       params:
-        temperature: 0
+        temperature: 0.7
         max_tokens: 4096
-        Pro/zai-org/GLM-5:
-          temperature: 0.7
+
       
 
     # -----------------------------
@@ -228,14 +227,15 @@ backend_routing:
 # Keep this pointed at a real Claude-compatible endpoint/model.
 claude_agent:
   enabled: true
-  model: "claude-sonnet-4-20250514"
+  model: "qwen3.5-plus"
+  cli_path: "C:\\Users\\PC\\AppData\\Roaming\\npm\\claude.cmd"
   fallback_model:
   permission_mode: "default"
   max_turns:
   max_thinking_tokens:
   effort:
-  base_url:
-  api_key:
+  base_url: https://coding.dashscope.aliyuncs.com/apps/anthropic
+  api_key:  
 
 # Security policy
 security:

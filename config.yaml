@@ -1,7 +1,7 @@
 # API keys
 api_keys:
   # internet_search tools require tavily api key, get it from https://www.tavily.com/ and put it here.
-  tavily: "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"
+  tavily: 
 
 # SMTP settings (password reset emails)
 smtp:
@@ -59,7 +59,7 @@ models:
       # #
       # SiliconFlow (OpenAI-compatible):
       base_url: "https://api.siliconflow.cn/v1"
-      api_key: "sk-qeqnlgmxicvnnqqarubzbpdpubhlreicuzdqloiklpeexnhs"
+      api_key:  
       models:
         - "Pro/MiniMaxAI/MiniMax-M2.5"
       params:
@@ -236,7 +236,7 @@ claude_agent:
   max_thinking_tokens:
   effort:
   base_url: https://coding.dashscope.aliyuncs.com/apps/anthropic
-  api_key: sk-sp-7776bc75824245dca20b04d41d1aac1e
+  api_key:  
 
 # Security policy
 security:
