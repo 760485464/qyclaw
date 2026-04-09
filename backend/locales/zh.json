@@ -1,0 +1,16 @@
+{
+  "conversation.default_title": "新对话",
+  "system.resume_failed": "恢复中断执行失败: {error}",
+  "system.deepagents_failed": "deepagents 调用失败: {error}",
+  "system.allow_all_notice": "已开启自动执行（allow_all），AI 正在处理中…",
+  "system.attachment_uploaded": "上传附件：{filename}",
+  "tool.completed": "工具执行完成，最后输出：\\n[{tool_name}] {content}",
+  "tool.no_ai_output": "deepagents 执行完成，但未产生可展示的 AI 文本。",
+  "interrupt.already_handled": "该审批已处理，请刷新消息查看最新执行结果。",
+  "interrupt.not_found": "Interrupt not found. 可能是服务进程重启（例如 --reload 监听到工作区文件变更）导致中断上下文丢失，请重发上一条问题。",
+  "interrupt.rejected": "用户拒绝本次工具/技能调用，执行终止。",
+  "interrupt.prompt_header": "需要人工确认，请选择是否允许执行以下操作：",
+  "office.title_styles": ["标题"],
+  "mailer.reset_subject": "Qyclaw 密码重置验证码",
+  "mailer.reset_body": "你正在进行 Qyclaw 密码重置。\\n\\n验证码：{code}\\n重置链接：{reset_link}\\n有效期：{minutes} 分钟\\n\\n如果这不是你的操作，请忽略本邮件。"
+}

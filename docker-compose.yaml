@@ -1,0 +1,94 @@
+services:
+  postgres:
+    image: postgres:16.13-alpine3.23
+    container_name: qyclaw-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: qyclaw
+      POSTGRES_USER: qyclaw
+      POSTGRES_PASSWORD: qyclaw_dev_password
+      TZ: Asia/Shanghai
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U qyclaw -d qyclaw"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  docker-0.docker:
+    image: docker:29.3.0-dind-alpine3.23
+    container_name: qyclaw-docker-0
+    privileged: true
+    restart: unless-stopped
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    command:
+      - --host=tcp://0.0.0.0:2376
+      - --tlsverify
+      - --tlscacert=/certs/ca.crt
+      - --tlscert=/certs/tls.crt
+      - --tlskey=/certs/tls.key
+    ports:
+      - "12376:2376"
+    volumes:
+      - ./certs:/certs:ro
+      - ./workspaces:/workspaces
+      - ./skills/agent:/agent_skills
+      - ./skills-builtin:/skills-builtin:ro
+
+
+  docker-1.docker:
+    image: docker:29.3.0-dind-alpine3.23
+    container_name: qyclaw-docker-1
+    privileged: true
+    restart: unless-stopped
+    environment:
+      DOCKER_TLS_CERTDIR: ""
+    command:
+      - --host=tcp://0.0.0.0:2376
+      - --tlsverify
+      - --tlscacert=/certs/ca.crt
+      - --tlscert=/certs/tls.crt
+      - --tlskey=/certs/tls.key
+    ports:
+      - "12377:2376"
+    volumes:
+      - ./certs:/certs:ro
+      - ./workspaces:/workspaces
+      - ./skills/agent:/agent_skills
+      - ./skills-builtin:/skills-builtin:ro
+
+  qyclaw:
+    profiles: ["app"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: qyclaw:v0.1.0
+    container_name: qyclaw
+    restart: unless-stopped
+    environment:
+      QYCLAW_DB_HOST: "postgres"
+      QYCLAW_DB_PORT: "5432"
+      QYCLAW_DB_USER: "qyclaw"
+      QYCLAW_DB_PASSWORD: "qyclaw_dev_password"
+      QYCLAW_DB_NAME: "qyclaw"
+      QYCLAW_FRONTEND_BASE_URL: "http://localhost:8080/frontend"
+    ports:
+      - "8000:8000"
+      - "8080:8080"
+    volumes:
+      - ./config.yaml:/app/config.yaml:ro
+      - ./uploads:/app/uploads
+      - ./skills:/app/skills
+      - ./certs:/app/certs:ro
+      - ./workspaces:/app/workspaces
+    depends_on:
+      postgres:
+        condition: service_healthy
+      docker-0.docker:
+        condition: service_started
+      docker-1.docker:
+        condition: service_started

@@ -1,0 +1,14 @@
+# Model provider dependencies (install as needed)
+
+# Currently enabled/commonly used in this project
+langchain-openai
+langchain-ollama
+claude-agent-sdk
+
+# Optional providers (uncomment when needed)
+# langchain-anthropic
+# langchain-google-genai
+# langchain-google-vertexai
+# langchain-aws
+# langchain-mistralai
+# langchain-cohere

@@ -1,0 +1,16 @@
+{
+  "conversation.default_title": "New Chat",
+  "system.resume_failed": "Failed to resume interrupt: {error}",
+  "system.deepagents_failed": "deepagents call failed: {error}",
+  "system.allow_all_notice": "Auto execution enabled (allow_all). AI is processing…",
+  "system.attachment_uploaded": "Attachment uploaded: {filename}",
+  "tool.completed": "Tool execution completed, last output:\n[{tool_name}] {content}",
+  "tool.no_ai_output": "deepagents finished, but produced no AI text.",
+  "interrupt.already_handled": "This approval was already handled. Please refresh to see the latest result.",
+  "interrupt.not_found": "Interrupt not found. The service may have restarted (for example, due to --reload). Please resend your last request.",
+  "interrupt.rejected": "User rejected this tool/skill call. Execution stopped.",
+  "interrupt.prompt_header": "Manual approval required. Choose whether to allow the following actions:",
+  "office.title_styles": ["title"],
+  "mailer.reset_subject": "Qyclaw password reset code",
+  "mailer.reset_body": "You requested a Qyclaw password reset.\\n\\nCode: {code}\\nReset link: {reset_link}\\nExpires in: {minutes} minutes\\n\\nIf this wasn't you, please ignore this email."
+}

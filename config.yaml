@@ -1,0 +1,295 @@
+# API keys
+api_keys:
+  # internet_search tools require tavily api key, get it from https://www.tavily.com/ and put it here.
+  tavily: "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"
+
+# SMTP settings (password reset emails)
+smtp:
+  enabled: true
+  host: "smtp.example.com"
+  port: 465
+  username: "user@example.com"
+  password: "xxxxxx"
+  from_email: "user@example.com"
+  from_name: "user@example.com"
+  use_tls: false
+  use_ssl: true
+  timeout_seconds: 15
+
+# LLM model settings
+# Notes:
+# 1) provider keys must be supported by langchain init_chat_model (openai/anthropic/google_genai/...).
+# 2) For each provider:
+#    - models: candidate model list
+#    - params: shared params (temperature/max_tokens), can be overridden by model name.
+# 3) Backend currently uses the first provider and its models[0] as the runtime model.
+#    Put your target provider first, and the target model as the first item in models.
+models:
+  providers:
+    # -----------------------------
+    # Enabled example: OpenAI-compatible APIs
+    # -----------------------------
+    openai:
+      # # Official OpenAI:
+      # base_url: "https://api.openai.com/v1"
+      # api_key: "sk-xxxx"
+      #
+      # # Ali Dashscope compatible mode (free/test):
+      # base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+      # api_key: "sk-xxxx"
+      #
+      # # Ali Dashscope coding (paid):
+      # base_url: "https://coding.dashscope.aliyuncs.com/v1"
+      # api_key: "sk-sp-86d129e98f964d679c5bc198cbb06f81"
+      # models:
+      #   - "qwen3.5-plus"
+      #   - "qwen3-max-2026-01-23"
+      #   - "qwen3-coder-next"
+      #   - "qwen3-coder-plus"
+      #   - "MiniMax-M2.5"
+      #   - "glm-5"
+      #   # - "gpt-4.1"
+      #   # - "gpt-4o"
+      #   # - "gpt-5"
+      # params:
+      #   temperature: 0
+      #   max_tokens: 4096
+      #   qwen3.5-plus:
+      #     temperature: 0.7
+      # #
+      # SiliconFlow (OpenAI-compatible):
+      base_url: "https://api.siliconflow.cn/v1"
+      api_key: "sk-qeqnlgmxicvnnqqarubzbpdpubhlreicuzdqloiklpeexnhs"
+      models:
+        - "Pro/MiniMaxAI/MiniMax-M2.5"
+      params:
+        temperature: 0
+        max_tokens: 4096
+        Pro/zai-org/GLM-5:
+          temperature: 0.7
+      
+
+    # -----------------------------
+    # Other provider templates (disabled by default)
+    # -----------------------------
+    # anthropic:
+    #   # Optional; usually no base_url required (official endpoint)
+    #   # base_url: "https://api.anthropic.com"
+    #   api_key: "sk-ant-xxxx"
+    #   models:
+    #     - "claude-sonnet-4-5"
+    #     - "claude-opus-4-1"
+    #   params:
+    #     temperature: 0
+    #     max_tokens: 4096
+
+    # google_genai:
+    #   # Gemini API
+    #   api_key: "AIzaSyxxxx"
+    #   models:
+    #     - "gemini-2.5-pro"
+    #     - "gemini-2.5-flash"
+    #   params:
+    #     temperature: 0
+    #     max_tokens: 4096
+
+    # google_vertexai:
+    #   # Vertex AI common parameters
+    #   project: "your-gcp-project-id"
+    #   location: "us-central1"
+    #   # credentials_path: "/path/to/service-account.json"
+    #   models:
+    #     - "gemini-2.5-pro"
+    #   params:
+    #     temperature: 0
+    #     max_tokens: 4096
+
+    # azure_openai:
+    #   # Azure OpenAI
+    #   base_url: "https://<resource-name>.openai.azure.com/"
+    #   api_key: "<azure-api-key>"
+    #   api_version: "2024-10-21"
+    #   models:
+    #     # Use deployment names here (not raw model IDs)
+    #     - "gpt-4o-deployment"
+    #   params:
+    #     temperature: 0
+    #     max_tokens: 4096
+
+    # xai:
+    #   api_key: "xai-xxxx"
+    #   models:
+    #     - "grok-3"
+    #     - "grok-3-mini"
+    #   params:
+    #     temperature: 0
+
+    # groq:
+    #   api_key: "gsk_xxxx"
+    #   models:
+    #     - "llama-3.3-70b-versatile"
+    #     - "mixtral-8x7b-32768"
+    #   params:
+    #     temperature: 0
+
+    # together:
+    #   api_key: "xxxx"
+    #   base_url: "https://api.together.xyz/v1"
+    #   models:
+    #     - "meta-llama/Llama-3.3-70B-Instruct-Turbo"
+    #   params:
+    #     temperature: 0
+
+    # mistralai:
+    #   api_key: "xxxx"
+    #   models:
+    #     - "mistral-large-latest"
+    #     - "ministral-8b-latest"
+    #   params:
+    #     temperature: 0
+
+    # cohere:
+    #   api_key: "xxxx"
+    #   models:
+    #     - "command-r-plus"
+    #     - "command-r"
+    #   params:
+    #     temperature: 0
+
+    # ollama:
+    #   # Local/private deployment
+    #   base_url: "http://127.0.0.1:11434"
+    #   models:
+    #     - "qwen2.5:1.5b-16k"
+    #   params:
+    #     temperature: 0
+    #     max_tokens: 24096
+    #     qwen2.5:1.5b-16k:
+    #       temperature: 0.7
+
+    # bedrock:
+    #   # AWS Bedrock
+    #   region_name: "us-east-1"
+    #   # access_key_id: "AKIA..."
+    #   # secret_access_key: "..."
+    #   models:
+    #     - "anthropic.claude-3-5-sonnet-20241022-v2:0"
+    #   params:
+    #     temperature: 0
+
+# Qyclaw unified configuration
+app:
+  name: "qyclaw-backend"
+  # UI/API locale: "en" (English, default) or "zh" (Chinese)
+  locale: "en"
+  env: "development"
+  host: "0.0.0.0"
+  port: 8000
+  debug: true
+  frontend_base_url: "http://localhost:8080/frontend"
+
+# Auth settings
+auth:
+  # Dev-only: when enabled, forgot-password returns the verification code and reset token.
+  expose_password_reset_debug: false
+
+# PostgreSQL connection
+database:
+  host: "127.0.0.1"
+  port: 5432
+  user: "qyclaw"
+  password: "qyclaw_dev_password"
+  name: "qyclaw"
+
+# Skills
+skills:
+  enabled: true
+  directories:
+    - "./skills-builtin"
+
+# Skill storage directories
+skill_storage:
+  userskills_dir: "./skills/user"
+  preskills_dir: "./skills/prepublish"
+  skills_dir: "./skills/published"
+  agentskills_dir: "./skills/agent"
+  conversationskills_dir: "./skills/conversation"
+
+# Backend routing / rollout
+backend_routing:
+  default_backend: "deepagents"
+  rollout_backend: "claude"
+  rollout_percent: 0
+  user_overrides: {}
+  enable_fallback: true
+  fallback_backend: "deepagents"
+
+# Claude Agent backend
+# Keep this pointed at a real Claude-compatible endpoint/model.
+claude_agent:
+  enabled: true
+  model: "qwen3.5-plus"
+  cli_path: "C:\\Users\\PC\\AppData\\Roaming\\npm\\claude.cmd"
+  fallback_model:
+  permission_mode: "default"
+  max_turns:
+  max_thinking_tokens:
+  effort:
+  base_url: https://coding.dashscope.aliyuncs.com/apps/anthropic
+  api_key: sk-sp-7776bc75824245dca20b04d41d1aac1e
+
+# Security policy
+security:
+  debug_exec_enabled: true
+  debug_exec_admin_only: true
+  terminal_policy: "strict"
+  terminal_allowed_roots:
+    - "/workspace"
+    - "/tmp"
+
+# Hindsight long-term memory
+hindsight:
+  enabled: true
+  base_url: "http://127.0.0.1:8888"
+  api_key:
+  timeout: 60.0
+  user_bank_prefix: "user"
+  recall_budget: "low"
+  recall_max_tokens: 600
+  retain_async: false
+  reflect_every_turns: 3
+
+# Agent behavior
+agent:
+  interrupt_on:
+    write_file: true
+    edit_file: true
+    terminal: true
+
+# Docker container
+docker:
+  enabled: true
+  image: "python:3.12-slim"
+  container_name_prefix: "qyclaw-exec"
+  workspace_root: "./workspaces"
+  # Remote Docker daemon (dind) settings
+  daemon_hosts:
+    - name: "dind-0"
+      host: "tcp://127.0.0.1:12376"
+    - name: "dind-1"
+      host: "tcp://127.0.0.1:12377"
+  daemon_workspace_root: "/workspaces"
+  tls:
+    enabled: true
+    certs_dir: "./certs"
+    ca_cert: "./certs/ca.crt"
+    client_cert: "./certs/tls.crt"
+    client_key: "./certs/tls.key"
+    verify: true
+  workdir: "/workspace"
+  readonly_workdir: false
+  auto_remove: true
+  timeout: 300
+  client_timeout: 10
+  environment:
+    - "PYTHONUNBUFFERED=1"
