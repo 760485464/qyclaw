@@ -28,6 +28,8 @@ Qyclaw 可以理解为一个“平台化的智能体操作系统”：
 - 需要用户记忆、技能管理、MCP 接入的 AI 平台
 - 希望在 `deepagents` 和 `claude` 之间切换后端的系统
 
+## 官网 qingyunclouds.com
+
 ## 和 OpenClaw 相比，我们的优势
 
 如果把 OpenClaw 理解为一个偏“单智能体执行内核”的基础形态，那么 Qyclaw 的重点不是简单复刻，而是把它平台化、可运营化、可隔离化。
@@ -308,7 +310,7 @@ Qyclaw 已具备：
 `claude_agent.model` 必须填写你的上游兼容端点实际支持的 model id，不要写想当然的别名。`claude_agent` 当前会优先使用这一段配置，而不是会话里残留的模型名。
 
 ```bash
-git clone https://github.com/cookeem/qyclaw.git
+git clone https://github.com/760485464/qyclaw.git
 cd qyclaw
 
 # 1. 编辑 Docker 部署配置
@@ -353,7 +355,7 @@ docker compose -f docker-compose-docker.yaml down
 - 如果你要走 `deepagents`，优先确认 `models.providers.*`
 
 ```bash
-git clone https://github.com/cookeem/qyclaw.git
+git clone https://github.com/760485464/qyclaw.git
 cd qyclaw
 
 # 1. 编辑本地运行配置
